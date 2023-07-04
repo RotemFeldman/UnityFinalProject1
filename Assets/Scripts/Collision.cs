@@ -34,6 +34,7 @@ public class Collision : MonoBehaviour
     void PlayerCrash()
     {
         GetComponent<Movement>().enabled = false;
+
         AddCrash();
         Invoke("ReloadLevel", 1);
     }

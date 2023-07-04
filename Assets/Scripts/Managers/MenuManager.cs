@@ -8,19 +8,21 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI crashes;
     
-    
     private void Start()
     {
         int num = PlayerPrefs.GetInt("Crashes");
-        crashes.text = num.ToString();
+        crashes.text = num.ToString();        
     }
     public void NewGame()
     {
+        GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(1);
     }
 
     public void Continue()
     {
+        GetComponent<AudioSource>().Play();
+
         if (PlayerPrefs.GetInt("LastPlayedLevel") == 0)
         {
             PlayerPrefs.SetInt("LastPlayedLevel", 1);
@@ -30,6 +32,8 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
+        GetComponent<AudioSource>().Play();
+
         Debug.Log("Quit Game");
         Application.Quit();
     }
