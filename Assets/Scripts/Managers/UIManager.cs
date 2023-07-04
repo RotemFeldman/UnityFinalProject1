@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI coinsCounter;
     [SerializeField] TextMeshProUGUI levelHeader;
     [SerializeField] int levelNumber;
-    [SerializeField] int coinsInLevel;
+    [SerializeField] public int coinsInLevel;
 
-    int coinsAmount = 0;
+    public int coinsAmount = 0;
 
     // Start is called before the first frame update
     void Start()

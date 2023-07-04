@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1996908234329869413}
   m_Layer: 0
   m_Name: Player Rocket
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upForce: 1000
   rotationForce: 100
+  particles: {fileID: 4213343813745469862}
 --- !u!114 &3263902787892379652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!65 &1996908234329869413
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class FadeOut : MonoBehaviour
     {
         if (col.a > 0)
         {
-            col.a -= Time.deltaTime;
+            col.a -= Time.deltaTime / 2;
             t.color = col;
         }
     }

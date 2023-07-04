@@ -9,13 +9,15 @@ using System.Threading;
 public class Collision : MonoBehaviour
 {
     public UIManager UI;
-    
+
+    private bool _playerCrashed = false;
+
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
         switch (collision.gameObject.tag)
         {
             case "Finish":
-                LoadNextLevel();
+                LevelDone();
                 break;
             case "Coin":
                 UI.PickedUpCoin();
@@ -24,8 +26,27 @@ public class Collision : MonoBehaviour
             case "Start":
                 break; 
             default:
-                ReloadLevel();
+                PlayerCrash();              
                 break;
+        }
+    }
+
+    void PlayerCrash()
+    {
+        GetComponent<Movement>().enabled = false;
+        AddCrash();
+        Invoke("ReloadLevel", 1);
+    }
+
+    void LevelDone()
+    {
+        GetComponent<Movement>().enabled = false;
+
+        if (UI.coinsAmount == UI.coinsInLevel)
+        Invoke("LoadNextLevel", 1);
+        else
+        {
+            Invoke("ReloadLevel", 1);
         }
     }
 
@@ -37,14 +58,28 @@ public class Collision : MonoBehaviour
 
     void LoadNextLevel()
     {
-        int NextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        int NextScene = SceneManager.GetActiveScene().buildIndex + 1;       
 
         if (NextScene == SceneManager.sceneCountInBuildSettings)
         {
             NextScene = 0;
         }
+
         SceneManager.LoadScene(NextScene);
+        PlayerPrefs.SetInt("LastPlayedLevel", NextScene);
     }
 
-    
+    void AddCrash()
+    {
+        if (!_playerCrashed)
+        {
+            int crashes = PlayerPrefs.GetInt("Crashes");
+
+            crashes++;
+            PlayerPrefs.SetInt("Crashes", crashes);
+
+            _playerCrashed = true;
+        }
+    }
+
 }
