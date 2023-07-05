@@ -8,7 +8,7 @@ using System.Threading;
 
 public class Collision : MonoBehaviour
 {
-    [SerializeField] UIManager UI;
+    [SerializeField] GameManager gm;
     [SerializeField] AudioClip endAudio;
     [SerializeField] AudioClip hitAudio;
 
@@ -27,8 +27,8 @@ public class Collision : MonoBehaviour
             case "Finish":
                 LevelDone();
                 break;
-            case "Coin":
-                UI.PickedUpCoin();
+            case "Star":
+                gm.PickedUpStar();
                 Destroy(collision.gameObject);
                 break;
             case "Start":
@@ -52,10 +52,11 @@ public class Collision : MonoBehaviour
     void LevelDone()
     {
         GetComponent<Movement>().enabled = false;
+        _playerCrashed = true;
 
         audioSource.PlayOneShot(endAudio);
 
-        if (UI.coinsAmount == UI.coinsInLevel)
+        if (gm.StarsAmount == gm.StarsInLevel)
         Invoke("LoadNextLevel", 1);
         else
         {

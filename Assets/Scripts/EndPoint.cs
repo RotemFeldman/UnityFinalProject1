@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EndPoint : MonoBehaviour
 {
-    public UIManager UI;
+    [SerializeField] GameManager gm;
 
-    public ParticleSystem greenParticles;
-    public ParticleSystem redParticles;
+    [SerializeField] ParticleSystem greenParticles;
+    [SerializeField] ParticleSystem redParticles;
     // Start is called before the first frame update
     void Start()
     {       
@@ -19,7 +19,7 @@ public class EndPoint : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (UI.coinsAmount == UI.coinsInLevel)
+            if (gm.StarsAmount == gm.StarsInLevel)
                 greenParticles.Play();
             else
                 redParticles.Play();
