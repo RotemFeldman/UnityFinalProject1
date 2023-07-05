@@ -7,16 +7,17 @@ public class Movement : MonoBehaviour
     [SerializeField] float upForce = 10f;
     [SerializeField] float rotationForce = 10f;
     [SerializeField] ParticleSystem particles;
+    [SerializeField] AudioClip engineAudio;
 
     Rigidbody rb;
-    AudioSource thrust;
+    AudioSource audioSource;
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        thrust = GetComponent<AudioSource>();        
+        audioSource = GetComponent<AudioSource>();        
     }
 
     // Update is called once per frame
@@ -34,14 +35,14 @@ public class Movement : MonoBehaviour
 
             particles.Play();
             
-            if (!thrust.isPlaying)
+            if (!audioSource.isPlaying)
             {
-                thrust.Play();
+                audioSource.PlayOneShot(engineAudio);
             }
         }
         else
         {
-            thrust.Stop();
+            audioSource.Stop();
             particles.Stop();
         }
     }

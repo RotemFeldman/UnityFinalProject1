@@ -8,9 +8,17 @@ using System.Threading;
 
 public class Collision : MonoBehaviour
 {
-    public UIManager UI;
+    [SerializeField] UIManager UI;
+    [SerializeField] AudioClip endAudio;
+    [SerializeField] AudioClip hitAudio;
 
-    private bool _playerCrashed = false;
+    AudioSource audioSource;
+    bool _playerCrashed = false;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
@@ -35,6 +43,8 @@ public class Collision : MonoBehaviour
     {
         GetComponent<Movement>().enabled = false;
 
+        audioSource.PlayOneShot(hitAudio);
+
         AddCrash();
         Invoke("ReloadLevel", 1);
     }
@@ -42,6 +52,8 @@ public class Collision : MonoBehaviour
     void LevelDone()
     {
         GetComponent<Movement>().enabled = false;
+
+        audioSource.PlayOneShot(endAudio);
 
         if (UI.coinsAmount == UI.coinsInLevel)
         Invoke("LoadNextLevel", 1);
@@ -63,7 +75,7 @@ public class Collision : MonoBehaviour
 
         if (NextScene == SceneManager.sceneCountInBuildSettings)
         {
-            NextScene = 0;
+            NextScene = 1;
         }
 
         SceneManager.LoadScene(NextScene);

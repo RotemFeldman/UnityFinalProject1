@@ -227,7 +227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins :'
+  m_text: 'Stars :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -534,10 +534,22 @@ PrefabInstance:
       propertyPath: particles
       value: 
       objectReference: {fileID: 1709550615}
+    - target: {fileID: 2515856634767944963, guid: 52f9e24fd7b264746bd733f1eb0d575e, type: 3}
+      propertyPath: engineAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 87dc3c0972e88c44db3546a63a661182, type: 3}
     - target: {fileID: 3263902787892379652, guid: 52f9e24fd7b264746bd733f1eb0d575e, type: 3}
       propertyPath: UI
       value: 
       objectReference: {fileID: 1865887847}
+    - target: {fileID: 3263902787892379652, guid: 52f9e24fd7b264746bd733f1eb0d575e, type: 3}
+      propertyPath: endAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5eb294a41005a0d40a44d4038a26b897, type: 3}
+    - target: {fileID: 3263902787892379652, guid: 52f9e24fd7b264746bd733f1eb0d575e, type: 3}
+      propertyPath: hitAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: ccf5b506e93ebf346bf29ed62b91a8a5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52f9e24fd7b264746bd733f1eb0d575e, type: 3}
 --- !u!1 &919114445

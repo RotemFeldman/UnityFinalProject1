@@ -16,16 +16,16 @@ public class MenuManager : MonoBehaviour
     public void NewGame()
     {
         GetComponent<AudioSource>().Play();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Level 1");
     }
 
     public void Continue()
     {
         GetComponent<AudioSource>().Play();
 
-        if (PlayerPrefs.GetInt("LastPlayedLevel") == 0)
+        if (PlayerPrefs.GetInt("LastPlayedLevel") == 1)
         {
-            PlayerPrefs.SetInt("LastPlayedLevel", 1);
+            PlayerPrefs.SetInt("LastPlayedLevel", 2);
         }
         SceneManager.LoadScene(PlayerPrefs.GetInt("LastPlayedLevel"));
     }
