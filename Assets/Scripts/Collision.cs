@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Build.Content;
 using System.Threading;
 
 public class Collision : MonoBehaviour
